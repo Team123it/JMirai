@@ -15,11 +15,12 @@ import net.mamoe.mirai.message.GroupMessageEvent;
 import net.mamoe.mirai.message.data.Message;
 
 /**
- * 
+ * mirai-console插件的主类模板类。<br>
+ * 请将您的主类继承本类并添加所有未实现的方法(<a href="https://github.com/123-Open-Source-Organization/JMirai/blob/master/demo">参考Demo</a>)
  * @author 御坂12456
  *
  */
-public abstract class MiraiAppAbstract extends PluginBase
+public abstract class MiraiAppAbstract extends PluginBase implements JMsg
 {
 	 public static PluginBase selfApp;
 
@@ -31,7 +32,7 @@ public abstract class MiraiAppAbstract extends PluginBase
 	  *
 	  */
 	 public void startup()
-	 {
+	 { 
 		  super.onLoad();
 		  selfApp = this;
 	 }
@@ -54,7 +55,7 @@ public abstract class MiraiAppAbstract extends PluginBase
 				String groupName = rawEvent.getGroup().getName(); // 消息来源QQ号
 				long qqId = rawEvent.getSender().getId(); // 消息来源QQ号
 				String qqName = rawEvent.getSenderName(); // 消息来源QQ昵称(若存在群名片则使用群名片昵称)
-				String msg = rawMsg.toString(); // 消息内容
+				String msg = rawMsg.toString().replaceAll("(\\[mirai){1}.*\\]{1}", ""); // 消息内容
 				new Thread(new Runnable() // 异步方法(多线程)处理消息来弥补mirai单线程的弊端
 				{
 					 @Override
@@ -82,7 +83,7 @@ public abstract class MiraiAppAbstract extends PluginBase
 					 }
 				}).run();
 		  });
-	 
+		  this.getLogger().info("Ping-Pong Enabled");
 	 }
 
 	 /**
@@ -96,38 +97,5 @@ public abstract class MiraiAppAbstract extends PluginBase
 	 {
 		  super.onDisable();
 	 }
-
-	 /**
-	  * 事件01:群消息事件<br>
-	  * 该方法会在mirai-console【主线程】中被调用。
-	  * 
-	  * @param Mirai     {@link Mirai}对象
-	  * @param rawEvent  消息原事件对象
-	  * @param rawMsg    消息原对象
-	  * @param sendTime  消息时间戳
-	  * @param groupId   消息来源群号
-	  * @param groupName 消息来源群名
-	  * @param qqId      消息来源QQ号
-	  * @param qqName    消息来源QQ昵称(若存在群名片则使用群名片昵称)
-	  * @param msg       消息内容
-	  */
-	 public abstract void groupMsg(Mirai Mirai, GroupMessageEvent rawEvent, Message rawMsg, long sendTime, long groupId,
-				String groupName, long qqId, String qqName, String msg);
-
-	 /**
-	  * 事件02:私聊(好友)消息事件<br>
-	  * 该方法会在mirai-console【主线程】中被调用。
-	  * 
-	  * @param Mirai    {@link Mirai}对象
-	  * @param rawEvent 消息原事件对象
-	  * @param rawMsg   消息原对象
-	  * @param sendTime 消息时间戳
-	  * @param qqId     消息来源QQ号
-	  * @param qqName   消息来源QQ昵称
-	  * @param msg      消息内容
-	  */
-	 public abstract void privateMsg(Mirai Mirai, FriendMessageEvent rawEvent, Message rawMsg, long sendTime, long qqId,
-				String qqName, String msg);
-	 
 	 
 }
