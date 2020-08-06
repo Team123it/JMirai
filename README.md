@@ -41,7 +41,7 @@ Mirai主项目使用GNU GPL-3.0许可协议。
 
 ------
 
-    Copyright (C) 2020 123 Open-Source Organization and contributors
+    Copyright (C) 2020 123 Open-Source Organization and jmirai contributors
     Copyright (C) 2019-2020 Mamoe Technologies and mirai contributors
     
     This program is free software: you can redistribute it and/or modify
