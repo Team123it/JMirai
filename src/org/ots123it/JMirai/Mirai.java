@@ -14,9 +14,6 @@ import net.mamoe.mirai.message.MessageReceipt;
 import net.mamoe.mirai.message.data.Message;
 
 import java.io.File;
-
-import org.jetbrains.annotations.NotNull;
-
 import net.mamoe.mirai.Bot;
 import net.mamoe.mirai.contact.BotIsBeingMutedException;
 import net.mamoe.mirai.contact.Contact;
@@ -169,7 +166,7 @@ public class Mirai
 	 /**
 	  * 发送群消息。
 	  * 
-	  * @param qqId 对应群聊的群号
+	  * @param groupId 对应群聊的群号
 	  * @param msg  消息内容
 	  * @throws NullPointerException {@link Mirai}对象为null
 	  * @return 消息发送后的返回结果
@@ -218,7 +215,7 @@ public class Mirai
 
 	 /**
 	  * 发送群消息。
-	  * @param qqId 对应群聊的群号
+	  * @param groupId 对应群聊的群号
 	  * @param msg 消息对象
 	  * @throws NullPointerException {@link Mirai}对象为null
 	  * @return 消息发送后的返回结果

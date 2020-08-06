@@ -10,7 +10,6 @@
 package org.ots123it.JMirai;
 
 import net.mamoe.mirai.console.plugins.PluginBase;
-import net.mamoe.mirai.contact.Group;
 import net.mamoe.mirai.message.FriendMessageEvent;
 import net.mamoe.mirai.message.GroupMessageEvent;
 import net.mamoe.mirai.message.data.Message;
@@ -84,7 +83,6 @@ public abstract class MiraiAppAbstract extends PluginBase
 				}).run();
 		  });
 	 
-		  
 	 }
 
 	 /**
@@ -94,8 +92,10 @@ public abstract class MiraiAppAbstract extends PluginBase
 	  * 本插件若已被启用，则mirai-console关闭前本函数【会】被调用。
 	  *
 	  */
-	 @Override
-	 public abstract void onDisable();
+	 public void onDisable()
+	 {
+		  super.onDisable();
+	 }
 
 	 /**
 	  * 事件01:群消息事件<br>

@@ -1,0 +1,6 @@
+name: "Plugin Name"
+author: "Author Name"
+version: "0.0.1"
+main: "com.example.Demo"
+info: "Hello world!"
+depends: []
