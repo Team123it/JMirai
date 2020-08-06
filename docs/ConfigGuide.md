@@ -29,7 +29,7 @@ mirai-console至此已配置完成。<br>
 
 2. 单击"浏览",选择下载下来的Demo项目的根目录,单击"选择文件夹"。<br>
 
-3. 此时Eclipse会显示Demo项目名(如下图),单击"全部全选"-"完成"导入Demo项目。<br>
+3. 此时Eclipse会显示Demo项目名(如下图),单击"全部选中"-"完成"导入Demo项目。<br>
 <img src="configguide_img/eclipse-import-2.png" alt="Eclipse Import 2" /><br>
 
 4. 全选"引用的库"中的两个jar文件,右键-"构建路径"-"从构建路径中除去"。<br>
