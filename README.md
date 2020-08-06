@@ -27,7 +27,7 @@ Java语言下的Mirai-Console插件高效率开发库
 
 ## 开始
 
-快速上手：<a href="https://github.com/123-Open-Source-Organization/JMirai/docs/ConfigGuide.md">JMiraiConfigGuide</a>
+快速上手：<a href="https://github.com/123-Open-Source-Organization/JMirai/blob/master/docs/ConfigGuide.md">JMiraiConfigGuide</a>
 
 ## 项目联系方式
 
