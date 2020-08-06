@@ -43,10 +43,10 @@ mirai-console至此已配置完成。<br>
 此时您已经导入完毕所需库,下面进行插件信息配置
 
 ### 3.配置插件信息
-使用记事本或Notepad++等文本编辑器打开项目根目录下的<a href="https://github.com/123-Open-Source-Organization/mirai-console/blob/master/demo/resources/plugin.yml">resources/plugin.yml</a>文件。<br>
+使用记事本或Notepad++等文本编辑器打开项目根目录下的<a href="https://github.com/123-Open-Source-Organization/JMirai/blob/master/demo/resources/plugin.yml">resources/plugin.yml</a>文件。<br>
 该文件编写格式请参考<a href="https://github.com/123-Open-Source-Organization/mirai-console/blob/master/PluginDocs/PluginStructure.MD">这里(PluginStructure)</a>。<br>
 
-编写完成保存后请打开<a href="https://github.com/123-Open-Source-Organization/mirai-console/blob/master/demo/src/com/example/Demo.java">src/com/example/Demo.java</a>文件,开始你的插件编写之旅吧!(此时可参考JMirai的Javadoc)<br>
+编写完成保存后请打开<a href="https://github.com/123-Open-Source-Organization/JMirai/blob/master/demo/src/com/example/Demo.java">src/com/example/Demo.java</a>文件,开始你的插件编写之旅吧!(此时可参考JMirai的Javadoc)<br>
 
 ### 4.生成插件jar文件
 若编写完毕需要生成插件jar文件以便Mirai-Console加载,请右键整个Demo项目-"导出"。<br>
