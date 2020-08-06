@@ -1,0 +1,6 @@
+name: "CQ2mirai"
+author: "Misaka12456"
+version: "0.0.1"
+main: "org.ots123it.CQ2mirai.Start"
+info: "A plugin helps developer migrate their bot plugin from CQ to mirai."
+depends: []
