@@ -2,6 +2,12 @@
 本文将引导您(Java开发者)配置JMirai的开发环境。<br>
 本文使用Eclipse IDE 2018.12版进行讲解,如使用Intellij IDEA等其它IDE的开发者可以参考本文的思路配置JMirai的开发环境。
 
+### 0.配置运行环境
+Mirai-Console的运行环境配置请参考这里
+
+JMirai的运行环境为Oracle Java运行时环境(Java Runtime Environment,JRE)(版本<b>8及以上</b>)。<br>
+您可以参考Mirai-Console的运行环境配置JMirai的运行环境。
+
 ### 1.配置mirai-console
 请前往<a href="https://github.com/123-Open-Source-Organization/MiraiOK">MiraiOK项目</a>下载MiraiOK一键包。<br>
 注意:请下载<b>Windows-amd64</b>版的MiraiOK。<br>
@@ -18,7 +24,7 @@ mirai-console至此已配置完成。<br>
 <img src="configguide_img/content_struct.png" alt="Content Folder Structure" /><br>
 除.wrapper.txt文件外均为Mirai-Console库,请记住这2个库文件的完整路径。<br>
 
-请前往<a href="https://github.com/123-Open-Source-Organization/JMirai/releases">JMirai Release页</a>下载最新版的JMirai库文件(对应文件名格式应为JMirai-[版本号].jar)。<br>
+请前往<a href="https://github.com/123-Open-Source-Organization/JMirai/releases">JMirai Release页</a>下载最新版的JMirai库文件包(对应文件名格式应为JMirai-[版本号].zip)。<br>
 下载完成后请记住JMirai库文件的完整路径。<br>
 
 请前往<a href="https://github.com/123-Open-Source-Organization/JMirai/blob/master/demo">JMirai Demo</a>下载JMirai Demo插件项目文件夹(推荐直接clone整个JMirai项目后提取demo文件夹)。<br>
@@ -37,7 +43,7 @@ mirai-console至此已配置完成。<br>
 
 5. 此时Eclipse会报告无法解析类型net.mamoe.mirai.message....等错误,请忽略错误并将lib文件夹下的所有jar文件全部删除。<br>
 
-6. 将前面所提到的Mirai-Console库的2个库文件和JMirai库文件复制进lib文件夹中，并右键这3个库文件-"构建路径"-"添加到构建路径"。<br>
+6. 将前面所提到的Mirai-Console库的2个库文件和JMirai库文件包<b>中的所有文件</b>复制进lib文件夹中，并右键这些库文件-"构建路径"-"添加到构建路径"。<br>
 <img src="configguide_img/eclipse-import-4.png" alt="Eclipse Import 4" /><br>
 
 此时您已经导入完毕所需库,下面进行插件信息配置
@@ -53,8 +59,10 @@ mirai-console至此已配置完成。<br>
 
 如下图,选择项目文件夹下的src文件夹和resources文件夹(不要选lib文件夹),指定导出到的路径(建议直接导出到MiraiOK所在目录/plugins下),然后单击"完成"即可生成jar文件。<br>
 <img src="configguide_img/eclipse-export.png" alt="Eclipse Export" /><br>
-将jar文件移动至MiraiOK所在目录/plugins下，重新启动MiraiOK即可加载插件。
+将JMirai库文件包中所有文件复制至MiraiOK所在目录/libraries下。<br>
+<font color="red"><b>重要：若不把JMirai库文件包中所有文件移动至/libraries下将会导致JMirai加载失败！</b></font><br>
+将导出后的项目jar文件移动至MiraiOK所在目录/plugins下，重新启动MiraiOK即可加载插件。
 
 
 ------
-本文最后编辑日期: Aug 6,2020
+本文最后编辑日期: Aug 11,2020

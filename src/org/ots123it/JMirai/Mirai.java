@@ -14,6 +14,10 @@ import net.mamoe.mirai.message.MessageReceipt;
 import net.mamoe.mirai.message.data.Message;
 
 import java.io.File;
+import java.util.Calendar;
+
+import org.jetbrains.annotations.NotNull;
+
 import net.mamoe.mirai.Bot;
 import net.mamoe.mirai.contact.BotIsBeingMutedException;
 import net.mamoe.mirai.contact.Contact;
@@ -21,6 +25,19 @@ import net.mamoe.mirai.contact.ContactList;
 import net.mamoe.mirai.contact.Friend;
 import net.mamoe.mirai.contact.Group;
 import net.mamoe.mirai.contact.MessageTooLargeException;
+import net.mamoe.mirai.event.events.BotGroupPermissionChangeEvent;
+import net.mamoe.mirai.event.events.BotInvitedJoinGroupRequestEvent;
+import net.mamoe.mirai.event.events.BotJoinGroupEvent;
+import net.mamoe.mirai.event.events.BotLeaveEvent;
+import net.mamoe.mirai.event.events.BotMuteEvent;
+import net.mamoe.mirai.event.events.BotUnmuteEvent;
+import net.mamoe.mirai.event.events.GroupMuteAllEvent;
+import net.mamoe.mirai.event.events.MemberJoinEvent;
+import net.mamoe.mirai.event.events.MemberJoinRequestEvent;
+import net.mamoe.mirai.event.events.MemberLeaveEvent;
+import net.mamoe.mirai.event.events.MemberMuteEvent;
+import net.mamoe.mirai.event.events.MemberPermissionChangeEvent;
+import net.mamoe.mirai.event.events.MemberUnmuteEvent;
 import net.mamoe.mirai.message.FriendMessageEvent;
 
 /**
@@ -41,7 +58,6 @@ import net.mamoe.mirai.message.FriendMessageEvent;
  * </p></p>
  * 如果需要开发插件主类,请使用{@link MiraiAppAbstract}(用法与JCQ中的JCQAppAbstract类似),注意查看相关注释。
  * @since 0.0.1
- * @version 0.0.1
  * @see MiraiAppAbstract
  * @author 御坂12456
  *
@@ -49,6 +65,7 @@ import net.mamoe.mirai.message.FriendMessageEvent;
 public class Mirai
 {
 	 Bot selfBot = null;
+	 public boolean isDebug = false;
 	 /**
 	  * 使用群消息原事件对象初始化{@link Mirai}类的新实例。
 	  * @param rawGroupEvent 群消息原事件对象
@@ -77,6 +94,123 @@ public class Mirai
 		  }
 	 }
 
+	 public Mirai(MemberJoinEvent rawJoinEvent)
+	 {
+		  if (rawJoinEvent  != null) { //如果参数不为null
+				selfBot = rawJoinEvent.getBot(); //获得Bot对象
+		  } else { //如果参数为null
+				throw new NullPointerException("rawJoinEvent is null");
+		  }
+	 }
+	 
+	 public Mirai(MemberLeaveEvent rawLeaveEvent)
+	 {
+		  if (rawLeaveEvent  != null) { //如果参数不为null
+				selfBot = rawLeaveEvent.getBot(); //获得Bot对象
+		  } else { //如果参数为null
+				throw new NullPointerException("rawLeaveEvent is null");
+		  }
+	 }
+	 
+	 public Mirai(MemberJoinRequestEvent rawJoinRequestEvent)
+	 {
+		  if (rawJoinRequestEvent  != null) { //如果参数不为null
+				selfBot = rawJoinRequestEvent.getBot(); //获得Bot对象
+		  } else { //如果参数为null
+				throw new NullPointerException("rawJoinRequestEvent is null");
+		  }
+	 }
+	 
+	 public Mirai(MemberMuteEvent rawMuteEvent)
+	 {
+		  if (rawMuteEvent  != null) { //如果参数不为null
+				selfBot = rawMuteEvent.getBot(); //获得Bot对象
+		  } else { //如果参数为null
+				throw new NullPointerException("rawMuteEvent is null");
+		  }
+	 }
+	 
+	 public Mirai(MemberUnmuteEvent rawUnmuteEvent)
+	 {
+		  if (rawUnmuteEvent  != null) { //如果参数不为null
+				selfBot = rawUnmuteEvent.getBot(); //获得Bot对象
+		  } else { //如果参数为null
+				throw new NullPointerException("rawUnmuteEvent is null");
+		  }
+	 }
+	 
+	 public Mirai(GroupMuteAllEvent rawMuteAllEvent)
+	 {
+		  if (rawMuteAllEvent  != null) { //如果参数不为null
+				selfBot = rawMuteAllEvent.getBot(); //获得Bot对象
+		  } else { //如果参数为null
+				throw new NullPointerException("rawMuteAllEvent is null");
+		  }
+	 }
+
+	 public Mirai(MemberPermissionChangeEvent rawPermissionChangeEvent)
+	 {
+		  if (rawPermissionChangeEvent  != null) { //如果参数不为null
+				selfBot = rawPermissionChangeEvent.getBot(); //获得Bot对象
+		  } else { //如果参数为null
+				throw new NullPointerException("rawPermissionChangeEvent is null");
+		  }
+	 }
+
+	 public Mirai(BotJoinGroupEvent bRawJoinGroupEvent)
+	 {
+		  if (bRawJoinGroupEvent  != null) { //如果参数不为null
+				selfBot = bRawJoinGroupEvent.getBot(); //获得Bot对象
+		  } else { //如果参数为null
+				throw new NullPointerException("bRawJoinGroupEvent is null");
+		  }
+	 }
+
+	 public Mirai(BotInvitedJoinGroupRequestEvent bRawJoinGroupRequestEvent)
+	 {
+		  if (bRawJoinGroupRequestEvent  != null) { //如果参数不为null
+				selfBot = bRawJoinGroupRequestEvent.getBot(); //获得Bot对象
+		  } else { //如果参数为null
+				throw new NullPointerException("bRawJoinGroupRequestEvent is null");
+		  }
+	 }
+	 
+	 public Mirai(BotLeaveEvent bRawLeaveEvent)
+	 {
+		  if (bRawLeaveEvent  != null) { //如果参数不为null
+				selfBot = bRawLeaveEvent.getBot(); //获得Bot对象
+		  } else { //如果参数为null
+				throw new NullPointerException("bRawLeaveEvent is null");
+		  }
+	 }
+	 
+	 public Mirai(BotGroupPermissionChangeEvent bPermissionChangeEvent)
+	 {
+		  if (bPermissionChangeEvent  != null) { //如果参数不为null
+				selfBot = bPermissionChangeEvent.getBot(); //获得Bot对象
+		  } else { //如果参数为null
+				throw new NullPointerException("bPermissionChangeEvent is null");
+		  }
+	 }
+
+	 public Mirai(BotMuteEvent bMuteEvent)
+	 {
+		  if (bMuteEvent  != null) { //如果参数不为null
+				selfBot = bMuteEvent.getBot(); //获得Bot对象
+		  } else { //如果参数为null
+				throw new NullPointerException("bMuteEvent is null");
+		  }
+	 }
+
+	 public Mirai(BotUnmuteEvent bUnmuteEvent)
+	 {
+		  if (bUnmuteEvent  != null) { //如果参数不为null
+				selfBot = bUnmuteEvent.getBot(); //获得Bot对象
+		  } else { //如果参数为null
+				throw new NullPointerException("bUnmuteEvent is null");
+		  }
+	 }
+	 
 	 /**
 	  * 获得当前{@link Mirai}对象对应的{@link Bot}对象。
 	  * @throws NullPointerException {@link Bot}对象为null
@@ -313,4 +447,136 @@ public class Mirai
 		  }
 	 }
 	 
+	 /**
+	  * 向控制台写入调试(Debug)类日志。<br>
+	  * 在继承{@link MiraiAppAbstract}的主类中存在一个方法{@link MiraiAppAbstract.isDebug()}<br>
+	  * 若该方法返回true则输出调试日志,否则不输出调试日志。
+	  * @param source 日志来源名,为null则使用插件名
+	  * @param msg 日志内容
+	  */
+	 public void logDebug(String source,String msg)
+	 {
+		  if (isDebug) {
+				if (selfBot != null) { //如果selfBot不为null
+						if (msg != null) { //如果msg不为null
+							 if (source == null) { //如果source为null
+								  source = MiraiAppAbstract.selfApp.getPluginName$mirai_console(); //设置source为插件名
+							 }
+							 String logContent = getFormattedLog("DEBUG", source, msg);
+							 System.out.println(logContent);
+						} else { //否则
+							throw new NullPointerException();
+						}
+				  } else { //否则
+						throw new NullPointerException();
+				  }
+		  }
+	 }
+	 
+	 /**
+	  * 向控制台写入信息(Info)类日志。
+	  * @param source 日志来源名,为null则使用插件名
+	  * @param msg 日志内容
+	  */
+	 public void logInfo(String source,String msg)
+	 {
+		  if (selfBot != null) { //如果selfBot不为null
+				if (msg != null) { //如果msg不为null
+					 if (source == null) { //如果source为null
+						  source = MiraiAppAbstract.selfApp.getPluginName$mirai_console(); //设置source为插件名
+					 }
+					 String logContent = getFormattedLog("INFO", source, msg);
+					 System.out.println(logContent);
+				} else { //否则
+					throw new NullPointerException();
+				}
+		  } else { //否则
+				throw new NullPointerException();
+		  }
+	 }
+	 
+	 /**
+	  * 向控制台写入警告(Warning)类日志。
+	  * @param source 日志来源名,为null则使用插件名
+	  * @param msg 日志内容
+	  */
+	 public void logWarn(String source,String msg)
+	 {
+		  if (selfBot != null) { //如果selfBot不为null
+				if (msg != null) { //如果msg不为null
+					 if (source == null) { //如果source为null
+						  source = MiraiAppAbstract.selfApp.getPluginName$mirai_console(); //设置source为插件名
+					 }
+					 String logContent = getFormattedLog("WARNING", source, msg);
+					 System.out.println(logContent);
+				} else { //否则
+					throw new NullPointerException();
+				}
+		  } else { //否则
+				throw new NullPointerException();
+		  }
+	 }
+	 
+	 /**
+	  * 向控制台输出错误(Error)类日志。
+	  * @param source 日志来源名,为null则使用插件名
+	  * @param msg 日志内容
+	  */
+	 public void logError(String source,String msg)
+	 {
+		  if (selfBot != null) { //如果selfBot不为null
+				if (msg != null) { //如果msg不为null
+					 if (source == null) { //如果source为null
+						  source = MiraiAppAbstract.selfApp.getPluginName$mirai_console(); //设置source为插件名
+					 }
+					 String logContent = getFormattedLog("ERROR", source, msg);
+					 System.err.println(logContent);
+				} else { //否则
+					throw new NullPointerException();
+				}
+		  } else { //否则
+				throw new NullPointerException();
+		  }
+	 }
+	 
+	 /**
+	  * 获取实时的格式化的日志内容
+	  * @param type 日志类型
+	  * @param source 日志来源
+	  * @param msg 日志内容
+	  * @return 格式化后的日志内容
+	  */
+	 public static String getFormattedLog(@NotNull String type,@NotNull String source,@NotNull String msg)
+	 {
+		  	int rawHour,rawMinute,rawSecond;
+		  	String hour,min,sec;
+			Calendar logCalendar = Calendar.getInstance();
+			rawHour = logCalendar.get(Calendar.HOUR_OF_DAY); //获取当前时间小时数
+			rawMinute = logCalendar.get(Calendar.MINUTE); //获取当前时间分钟数
+			rawSecond = logCalendar.get(Calendar.SECOND); //获取当前时间秒数
+			if (rawHour <= 9) { //小时数补0
+				 hour = "0" + Long.toString(rawHour);
+			} else {
+				 hour = Long.toString(rawHour);
+			}
+			if (rawMinute <= 9) { //分钟数补0
+				 min = "0" + Long.toString(rawMinute);
+			} else {
+				 min = Long.toString(rawMinute);
+			}
+			if (rawSecond <= 9) { //秒数补0
+				 sec = "0" + Long.toString(rawSecond);
+			} else {
+				 sec = Long.toString(rawSecond);
+			}
+			StringBuilder logBuilder = new StringBuilder(" ").append(hour).append(":").append(min).append(":").append(sec)
+					  .append(" [").append(type.toUpperCase()).append("] [").append(source).append("] ").append(msg);
+			return logBuilder.toString();
+	 }
+	 
+	 @Override
+	 public String toString()
+	 {
+		  return "Mirai(BotQQ=" + selfBot.getSelfQQ().getId() + ", " + "BotId=" + selfBot.getId() + ")";
+	 }
 }

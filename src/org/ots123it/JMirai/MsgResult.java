@@ -40,6 +40,7 @@ import net.mamoe.mirai.message.MessageReceipt;
  * <td>-99</td><td>其它</td>
  * </tr>
  * </table>
+ * @since 0.0.1
  * @author 御坂12456
  *
  */
