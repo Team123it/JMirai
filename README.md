@@ -36,8 +36,8 @@ Java语言下的Mirai-Console插件高效率开发库
 
 ## 开源许可证
 
-JMirai使用GNU GPL-3.0许可协议。
-Mirai主项目使用GNU GPL-3.0许可协议。
+JMirai使用GNU AGPL-3.0许可协议。
+Mirai主项目使用GNU AGPL-3.0许可协议。
 
 ------
 
