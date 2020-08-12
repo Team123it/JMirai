@@ -3,7 +3,7 @@
 本文使用Eclipse IDE 2018.12版进行讲解,如使用Intellij IDEA等其它IDE的开发者可以参考本文的思路配置JMirai的开发环境。
 
 ### 0.配置运行环境
-Mirai-Console的运行环境配置请参考这里
+Mirai-Console的运行环境配置请参考<a href="https://github.com/123-Open-Source-Organization/mirai-console/blob/master/PluginDocs/ToStart.MD" alt="Mirai-Console ToStart Document">这里</a>
 
 JMirai的运行环境为Oracle Java运行时环境(Java Runtime Environment,JRE)(版本<b>8及以上</b>)。<br>
 您可以参考Mirai-Console的运行环境配置JMirai的运行环境。
