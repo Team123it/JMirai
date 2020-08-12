@@ -644,6 +644,30 @@ public class Mirai
 		  }
 	 }
 	 
+	 /**
+	  * 处理Bot被邀请入群请求。
+	  * @param event 原请求事件
+	  * @param processType 处理类型(0=通过请求,1=忽略请求)
+	  * @throws OperationNotSupportedException 无效的处理类型
+	  */
+	 public void setRequestBotInviteJoinGroup(BotInvitedJoinGroupRequestEvent event,int processType)
+	 {
+		  try {
+				switch (processType)
+				{
+				case 0: //允许
+					 event.accept();
+					 break;
+				case 1: //忽略
+					 event.ignore();
+				default:
+					 throw new OperationNotSupportedException("processType is invalid");
+				}
+		  } catch (Exception e) {
+				logError(MiraiAppAbstract.selfApp.getPluginName$mirai_console(), e.getMessage());
+		  }
+	 }
+	 
 	 @Override
 	 public String toString()
 	 {
