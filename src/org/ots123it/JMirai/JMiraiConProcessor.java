@@ -13,8 +13,9 @@ import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
+import java.util.Calendar;
 import java.util.List;
+import java.util.TimeZone;
 
 import org.jetbrains.annotations.NotNull;
 import org.ots123it.jhlper.CommonHelper;
@@ -123,11 +124,14 @@ public class JMiraiConProcessor extends BlockingCommand
 				System.out.println(Mirai.getFormattedLog("INFO", "JMirai", "Current Mirai-Console Version: " + miraiConsoleVer));
 				return true;
 		  case "stat": //查看运行状态
+				TimeZone.setDefault(TimeZone.getTimeZone("GMT+0:00"));
+				Calendar nowCalendar = Calendar.getInstance();
 				String miraiConsoleVer2 = MiraiConsole.version; //获取mirai-console当前版本号
 				String jMiraiVer2 = JMirai.JMIRAI_VERSION; //获取JMirai当前版本号
 				String path = getClass().getProtectionDomain().getCodeSource().getLocation().getPath(); //获取JMirai库文件所在路径
 				long runningTimeLong = System.currentTimeMillis() - MiraiAppAbstract.JMirai_Start; //获取JMirai已运行毫秒数
-				String runningTimeStr = new SimpleDateFormat("HH:mm:ss").format(new Date(runningTimeLong)); //获取JMirai已运行时间(格式化后字符串)
+				nowCalendar.setTimeInMillis(runningTimeLong);
+				String runningTimeStr = new SimpleDateFormat("HH:mm:ss").format(nowCalendar.getTime()); //获取JMirai已运行时间(格式化后字符串)
 				try {
 					 path = URLDecoder.decode(path, "UTF-8");
 				} catch (UnsupportedEncodingException e) {

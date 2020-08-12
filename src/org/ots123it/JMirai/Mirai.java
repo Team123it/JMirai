@@ -16,6 +16,8 @@ import net.mamoe.mirai.message.data.Message;
 import java.io.File;
 import java.util.Calendar;
 
+import javax.naming.OperationNotSupportedException;
+
 import org.jetbrains.annotations.NotNull;
 
 import net.mamoe.mirai.Bot;
@@ -572,6 +574,74 @@ public class Mirai
 			StringBuilder logBuilder = new StringBuilder(" ").append(hour).append(":").append(min).append(":").append(sec)
 					  .append(" [").append(type.toUpperCase()).append("] [").append(source).append("] ").append(msg);
 			return logBuilder.toString();
+	 }
+	 
+	 /**
+	  * 处理加群请求(常用参数)(Bot必须是管理员或群主)。<br>
+	  * 本方法默认在拒绝和忽略时不会将请求发起人(申请加群的人员)加入黑名单(不再接收该人员的加群请求),如需加入黑名单请使用{@linkplain #setRequestGroupAdd(MemberJoinRequestEvent, int, String, boolean) 处理加群请求(完整参数)}。
+	  * @param event 原请求事件
+	  * @param processType 处理类型(0=通过请求,1=拒绝请求,2=忽略请求)
+	  * @param rejectMsg 处理类型为拒绝请求时的拒绝信息(请求发起人可见),仅在处理类型为拒绝请求时可用(无需拒绝信息或为其它处理类型请置此项为null)
+	  * @see #setRequestGroupAdd(MemberJoinRequestEvent, int, String, boolean) 处理加群请求(完整参数)
+	  * @throws OperationNotSupportedException 无效的处理类型
+	  */
+	 public void setRequestGroupAdd(MemberJoinRequestEvent event,int processType,String rejectMsg)
+	 {
+		  try {
+				switch (processType)
+				{
+				case 0: //允许
+					 event.accept();
+					 break;
+				case 1: //拒绝
+					 if (rejectMsg == null) {
+						  event.reject();
+					 } else {
+						  event.reject(false, rejectMsg);
+					 }
+					 break;
+				case 2: //忽略
+					 event.ignore();
+				default:
+					 throw new OperationNotSupportedException("processType is invalid");
+				}
+		  } catch (Exception e) {
+				logError(MiraiAppAbstract.selfApp.getPluginName$mirai_console(), e.getMessage());
+		  }
+	 }
+	 
+	 /**
+	  * 处理加群请求(完整参数)(Bot必须是管理员或群主)。
+	  * @param event 原请求事件
+	  * @param processType 处理类型(0=通过请求,1=拒绝请求,2=忽略请求)
+	  * @param rejectMsg 处理类型为拒绝请求时的拒绝信息(请求发起人可见),仅在处理类型为拒绝请求时可用(无需拒绝信息或为其它处理类型请置此项为null)
+	  * @param isBlackList 是否将对应成员加入黑名单(不再接收该人员的加群请求),仅在处理类型为拒绝请求和忽略请求时可用(其它处理类型请置此项为false)
+	  * @see #setRequestGroupAdd(MemberJoinRequestEvent, int, String) 处理加群请求(常用参数)
+	  * @throws OperationNotSupportedException 无效的处理类型
+	  */
+	 public void setRequestGroupAdd(MemberJoinRequestEvent event,int processType,String rejectMsg,boolean isBlackList)
+	 {
+		  try {
+				switch (processType)
+				{
+				case 0: //允许
+					 event.accept();
+					 break;
+				case 1: //拒绝
+					 if (rejectMsg == null) {
+						  event.reject(isBlackList);
+					 } else {
+						  event.reject(isBlackList, rejectMsg);
+					 }
+					 break;
+				case 2: //忽略
+					 event.ignore(isBlackList);
+				default:
+					 throw new OperationNotSupportedException("processType is invalid");
+				}
+		  } catch (Exception e) {
+				logError(MiraiAppAbstract.selfApp.getPluginName$mirai_console(), e.getMessage());
+		  }
 	 }
 	 
 	 @Override
