@@ -3,7 +3,7 @@
 本文使用Eclipse IDE 2018.12版进行讲解,如使用Intellij IDEA等其它IDE的开发者可以参考本文的思路配置JMirai的开发环境。
 
 ### 0.配置运行环境
-Mirai-Console的运行环境配置请参考<a href="https://github.com/123-Open-Source-Organization/mirai-console/blob/master/PluginDocs/ToStart.MD" alt="Mirai-Console ToStart Document">这里</a>
+Mirai-Console的运行环境配置请参考<a href="https://github.com/123-Open-Source-Organization/mirai-console/blob/master/PluginDocs/ToStart.MD" title="Mirai-Console ToStart Document">这里</a>
 
 JMirai的运行环境为Oracle Java运行时环境(Java Runtime Environment,JRE)(版本<b>8及以上</b>)。<br>
 您可以参考Mirai-Console的运行环境配置JMirai的运行环境。
@@ -24,6 +24,7 @@ mirai-console至此已配置完成。<br>
 <img src="configguide_img/content_struct.png" alt="Content Folder Structure" /><br>
 除.wrapper.txt文件外均为Mirai-Console库,请记住这2个库文件的完整路径。<br>
 
+<a name="UpdateFromHere"></a>
 请前往<a href="https://github.com/123-Open-Source-Organization/JMirai/releases">JMirai Release页</a>下载最新版的JMirai库文件包(对应文件名格式应为JMirai-[版本号].zip)。<br>
 下载完成后请记住JMirai库文件的完整路径。<br>
 
@@ -65,4 +66,4 @@ mirai-console至此已配置完成。<br>
 
 
 ------
-本文最后编辑日期: Aug 11,2020
+本文最后编辑日期: Aug 12,2020
